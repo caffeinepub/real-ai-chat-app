@@ -1,0 +1,126 @@
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque.woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/assets/fonts/Satoshi.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0.14 0.005 270;
+    --foreground: 0.96 0.008 270;
+    --card: 0.16 0.008 270;
+    --card-foreground: 0.96 0.008 270;
+    --popover: 0.16 0.008 270;
+    --popover-foreground: 0.96 0.008 270;
+    --primary: 0.62 0.22 285;
+    --primary-foreground: 0.98 0.005 270;
+    --secondary: 0.2 0.01 270;
+    --secondary-foreground: 0.85 0.01 270;
+    --muted: 0.2 0.008 270;
+    --muted-foreground: 0.55 0.01 270;
+    --accent: 0.62 0.22 285;
+    --accent-foreground: 0.98 0.005 270;
+    --destructive: 0.55 0.22 20;
+    --destructive-foreground: 0.98 0.005 270;
+    --border: 0.22 0.012 270;
+    --input: 0.22 0.012 270;
+    --ring: 0.62 0.22 285;
+    --radius: 0.75rem;
+    --sidebar: 0.12 0.007 270;
+    --sidebar-foreground: 0.96 0.008 270;
+    --sidebar-primary: 0.62 0.22 285;
+    --sidebar-primary-foreground: 0.98 0.005 270;
+    --sidebar-accent: 0.18 0.01 270;
+    --sidebar-accent-foreground: 0.85 0.01 270;
+    --sidebar-border: 0.2 0.01 270;
+    --sidebar-ring: 0.62 0.22 285;
+    --chart-1: 0.62 0.22 285;
+    --chart-2: 0.65 0.18 200;
+    --chart-3: 0.7 0.16 160;
+    --chart-4: 0.68 0.2 45;
+    --chart-5: 0.6 0.24 20;
+    --user-bubble: 0.55 0.2 285;
+    --user-bubble-foreground: 0.98 0.005 270;
+    --assistant-bubble: 0.18 0.01 270;
+    --assistant-bubble-foreground: 0.92 0.008 270;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+}
+
+@layer utilities {
+  .user-bubble {
+    background: oklch(var(--user-bubble));
+    color: oklch(var(--user-bubble-foreground));
+  }
+  .assistant-bubble {
+    background: oklch(var(--assistant-bubble));
+    color: oklch(var(--assistant-bubble-foreground));
+  }
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: oklch(var(--border)) transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: oklch(var(--border));
+    border-radius: 2px;
+  }
+}
+
+@keyframes bounce-dot {
+  0%,
+  80%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  40% {
+    transform: translateY(-6px);
+    opacity: 1;
+  }
+}
+
+.typing-dot {
+  animation: bounce-dot 1.4s infinite ease-in-out;
+}
+.typing-dot:nth-child(1) {
+  animation-delay: 0s;
+}
+.typing-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.typing-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
